@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+		<persistence-unit name="cePu">
+			<provider>org.hibernate.ejb.HibernatePersistence</provider>
+	        <jta-data-source>ceDS</jta-data-source>
+
+			<class>br.com.mateus.ejb.controleestoque.public.TbCliente</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbEstoque</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbFilial</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbFormaPagamento</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbItensPedido</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbPedidoEstoque</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbPrecoProduto</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbProduto</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbStatusItensPedido</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbStatusPedido</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbTipoCliente</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbTipoPedido</class>
+			<class>br.com.mateus.ejb.controleestoque.public.TbUsuario</class>
+
+			<properties>
+	        	<property name="hibernate.hbm2ddl.auto" value="none"/>
+	        	<property name="hibernate.show.sql" value="none"/>
+  			<property name="hibernate.format_sql" value="none"/>
+     	</properties>		  
+		</persistence-unit>		 
+</persistence> 	 
