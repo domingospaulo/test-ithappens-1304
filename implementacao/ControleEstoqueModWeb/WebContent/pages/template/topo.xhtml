@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:p="http://primefaces.org/ui">
+      
+    <h:body>
+	    <ui:composition >
+    		<p:outputPanel>
+				<p:panel> 
+					<h:form  id="formTopo">
+						<p:menubar style="background: rgba(0, 0, 0, 0) none repeat scroll 0 center; color: white; border: 0 none; padding: 0; color: white; 
+							min-width: 400px !important;">
+						    <p:menuitem label="Página Inicial" value="Página Inicial" url="/ControleEstoqueModWeb/pages/principal.jsf">
+						    </p:menuitem>
+						    
+							<p:menuitem value="Sair" icon="fa fa-fw fa-sign-out" action="#{loginMB.deslogarSistema()}" style="float: right !important; " >
+						    </p:menuitem>
+						</p:menubar>
+						</h:form>
+				</p:panel>
+			</p:outputPanel>
+	    </ui:composition>
+    </h:body>
+</h:html>

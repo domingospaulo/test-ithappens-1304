@@ -1,0 +1,65 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+   	font-size: 12px !important;
+    
+    margin: 0px;
+    border: 0px;
+    padding: 0px; 
+	
+	font-family:Arial, Helvetica, sans-serif !important;
+	background: #F8F8F8 !important;
+	background-size: 600px !important;
+	background-position: center top !important;
+	background-origin: content-box;
+}
+
+
+#divGeral {
+    width: 953px;
+    margin: 3px auto;
+}
+
+#divBannetTopo {
+    height: 90px;
+    width: auto;
+}
+
+#divMenu {
+	height: 40px;
+    margin-top: 1px;
+}
+
+#divCorpo {
+	border-radius: 5px;
+	float: left;
+	background-color: white;
+    /*height: auto;*/
+    min-height: 470px !important;
+    width: 953px;
+}
+
+
+#divRodape {
+    float: left;
+    padding: 2px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.semBorda tr, .semBorda td {
+	border: none !important;
+}
+
+.comBorda tr, .semBorda td {
+	border: 1px !important;
+}
+
+
+.semBordaPanel {
+	border: none !important;
+}
+
+.panelPrincipalTela {
+	border: none !important;
+}

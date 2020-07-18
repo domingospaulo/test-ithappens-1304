@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet name="main.css" library="css" />	
+</h:head>
+
+<h:body>
+	<h:panelGroup id="login">
+		<h:form id="form" >
+			<div id="divTotalLogin">
+				<p:growl id="mensagem" showDetail="true" />
+				<p:panelGrid style=" margin-top: 110px; margin-left: 35px;" >
+					<p:row>
+						<p:column style="text-align: right;">
+							<h:outputLabel value="Login:" />
+						</p:column>
+						<p:column>
+							<p:inputText value="#{loginMB.login}" style="width: 200px; background-color: white !important; color: #004d99 !important"/>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column style="text-align: right;">
+							<h:outputLabel value="Senha:" />
+						</p:column>
+						<p:column>
+							<p:password value="#{loginMB.senha}" style="width: 200px; background-color: white !important; color: #004d99 !important" />
+						</p:column>					
+					</p:row>
+					<p:row style="text-align: right;">
+						<p:column colspan="2">
+							<p:panel style="margin-top: 0px !important;">
+								<p:commandButton
+												 value="Entrar" 
+												 update="@form" 
+												 ajax="true"
+												 style="margin-right: 10px;"
+												 action="#{loginMB.logar()}"/>
+						
+						 </p:panel>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			
+			</div>
+
+		</h:form>
+	</h:panelGroup>
+</h:body>
+
+</h:html>

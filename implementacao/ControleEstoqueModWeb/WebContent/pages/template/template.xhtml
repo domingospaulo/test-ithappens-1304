@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<!-- CSS -->
+		<h:outputStylesheet name="main.css" library="css" />	
+
+		<!-- JS -->
+		<h:outputScript name="main.js" library="js"/>
+		
+		<script type="text/javascript">
+			function start() {
+			    PF('statusDialog').show();
+			} 
+		</script>
+		
+		<script type="text/javascript">
+		PrimeFaces.locales['pt'] = {  
+                closeText: 'Fechar',  
+                prevText: 'Anterior',  
+                nextText: 'Próximo',  
+                currentText: 'Começo',  
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],  
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],  
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],  
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],  
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],  
+                weekHeader: 'Semana',  
+                firstDay: 1,  
+                isRTL: false,  
+                showMonthAfterYear: false,  
+                yearSuffix: '',  
+                timeOnlyTitle: 'Só Horas',  
+                timeText: 'Tempo',  
+                hourText: 'Hora',  
+                minuteText: 'Minuto',  
+                secondText: 'Segundo',  
+                currentText: 'Data Atual',  
+                ampm: false,  
+                month: 'Mês',  
+                week: 'Semana',  
+                day: 'Dia',  
+                allDayText : 'Todo Dia'  
+            };
+		</script>
+        <style type="text/css">
+			.ui-growl {
+			left: 0.3%;
+			top: 24%;
+			}
+        </style>			
+	</h:head>
+	
+	<h:body>
+		<div id="divTotal">
+				<p:outputPanel>
+					<ui:include src="/pages/template/topo.xhtml" />	
+				</p:outputPanel>
+				
+				<p:outputPanel>
+							<ui:insert name="content"/>	
+				</p:outputPanel>		
+				
+				<p:outputPanel>
+					<ui:insert name="footer">
+						<ui:include src="/pages/template/rodape.xhtml" />
+					</ui:insert>	
+				</p:outputPanel>
+		</div>
+	</h:body>	
+	
+</html>

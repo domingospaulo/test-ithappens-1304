@@ -1,0 +1,4 @@
+br/com/mateus/controleestoque/filter/AdminFilter.class
+br/com/mateus/controleestoque/managedbeans/LoginMB.class
+br/com/mateus/controleestoque/util/MessageUtil.class
+br/com/mateus/controleestoque/configuracao/MultiPageMessagesSupport.class
