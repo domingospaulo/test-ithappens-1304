@@ -22,11 +22,26 @@
 					<p:panelGrid style="margin-top:20px; width:447px;" styleClass="semBorda">
 					    <p:row>
 							<p:column style="font-weight: bold;">
-								<h:outputLabel value="Nome:" for="nome"/>
+								<h:outputLabel value="Login:" for="login"/>
 							</p:column>
 					        <p:column style="font-weight: bold; ">
 					        	<h:inputHidden value="#{usuarioMB.usuarioEdicao.idUsuario}"/>
-					        	<p:inputText id="nome" readonly="true" value="#{usuarioMB.usuarioEdicao.nomeUsuario}" style="width:246px;"
+					        	<p:inputText id="login" value="#{usuarioMB.usuarioEdicao.loginUsuario}"
+					        	 	required="true"
+					        	 	requiredMessage="Informe o Login!"
+					        	 	style="width:246px;"
+					        		onkeypress="return event.keyCode != 13"/>
+					        </p:column>	
+					    </p:row>					
+					    <p:row>
+							<p:column style="font-weight: bold;">
+								<h:outputLabel value="Nome:" for="nome"/>
+							</p:column>
+					        <p:column style="font-weight: bold; ">
+					        	<p:inputText id="nome" value="#{usuarioMB.usuarioEdicao.nomeUsuario}" 
+					        		required="true"
+					        	 	requiredMessage="Informe o Nome!"
+					        		style="width:246px;"
 					        		onkeypress="return event.keyCode != 13"/>
 					        </p:column>	
 					    </p:row>					    
@@ -35,7 +50,10 @@
 								<h:outputLabel value="Senha:" for="senha"/>
 							</p:column>
 					        <p:column style="font-weight: bold;">
-					        	<p:password id="senha" value="#{usuarioMB.senha}" style="width:246px;"
+					        	<p:password id="senha" value="#{usuarioMB.senha}" 
+					        		required="true"
+					        	 	requiredMessage="Informe a Senha!"
+					        		style="width:246px;"
 					        		onkeypress="return event.keyCode != 13"/>
 					        </p:column>	
 					    </p:row>
@@ -44,7 +62,10 @@
 								<h:outputLabel value="Confirma Senha:" for="confirmaSenha"/>
 							</p:column>
 					        <p:column style="font-weight: bold;">
-					        	<p:password id="confirmaSenha" value="#{usuarioMB.confirmeSenha}" style="width:246px;"
+					        	<p:password id="confirmaSenha" value="#{usuarioMB.confirmeSenha}" 
+					        	 	required="true"
+					        	 	requiredMessage="Confirme a Senha!"					        	
+					        		style="width:246px;"
 					        		onkeypress="return event.keyCode != 13"/>
 					        </p:column>	
 					    </p:row>					    
@@ -57,7 +78,7 @@
 					            	<p:commandButton 
 					            		 icon="ui-icon-disk" 
 						            	 title="Salvar" 
-						            	 action="#{usuarioMB.salvar()}"
+						            	 action="#{usuarioMB.salvarAtualizar()}"
 						            	 update="@all"
 						            	 ajax="false"
 						            	 value="Salvar" 

@@ -18,13 +18,15 @@
 										    
 					        <p:submenu label="Administrar" icon="pi pi-pencil">
 					            <p:menuitem value="Usuário" url="/ControleEstoqueModWeb/pages/usuario/listarUsuarios.jsf" icon="pi pi-angle-double-left" />
-					            <p:menuitem value="Cliente" url="#" icon="pi pi-angle-double-right" />
-					            <p:menuitem value="Filial" url="#" icon="pi pi-angle-double-right" />
+					            <p:menuitem value="Cliente" url="/ControleEstoqueModWeb/pages/cliente/listarClientes.jsf" icon="pi pi-angle-double-right" />
+					            <p:menuitem value="Filial" url="/ControleEstoqueModWeb/pages/filial/listarFiliais.jsf" icon="pi pi-angle-double-right" />
+					            <p:menuitem value="Produto" url="/ControleEstoqueModWeb/pages/produto/listarProdutos.jsf" icon="pi pi-angle-double-right" />
+					            <p:menuitem value="Forma Pagamento" url="/ControleEstoqueModWeb/pages/formaPagamento/listarFormaPagamento.jsf" icon="pi pi-angle-double-right" />
 				        	</p:submenu>
 										    
 					        <p:submenu label="Pedidos" icon="pi pi-pencil">
-					            <p:menuitem value="Compra" url="#" icon="pi pi-angle-double-left" />
-					            <p:menuitem value="Venda" url="#" icon="pi pi-angle-double-right" />
+					            <p:menuitem value="Consultar Pedidos" url="/ControleEstoqueModWeb/pages/pedido/listarPedidos.jsf" icon="pi pi-angle-double-left" />
+					            <p:menuitem value="Novo Pedido" url="/ControleEstoqueModWeb/pages/pedido/novoPedido.jsf" icon="pi pi-angle-double-right" />
 				        	</p:submenu>
 				        					        						    
 							<p:menuitem value="Sair" icon="pi pi-times" action="#{loginMB.deslogarSistema()}" style="float: right !important; " >

@@ -40,7 +40,6 @@ public class UsuarioMB implements Serializable{
 	
 	public String novoUsuario(){
 		this.usuarioEdicao = new TbUsuario();
-		
 		this.senha = "";
 		this.confirmeSenha = "";
 		
@@ -60,22 +59,13 @@ public class UsuarioMB implements Serializable{
 			this.listaUsuarios = usuarioFacade.findAll();
 			this.listaUsuariosModel = new UsuarioDataModel(this.listaUsuarios);
 			
-			PrimeFaces.current().executeScript("PF('statusDialog').hide();");			
+			PrimeFaces.current().executeScript(Constantes.PF_DIALOG);			
 		} catch (Exception e) {
 			MessageUtil.error(Constantes.MSG_ERROR_HEADER, Constantes.MSG_ERRO_SISTEMA);	
 			e.printStackTrace();
 			
-			PrimeFaces.current().executeScript("PF('statusDialog').hide();");	
+			PrimeFaces.current().executeScript(Constantes.PF_DIALOG);	
 		}
-
-	}
-
-	public UsuarioDataModel getListaUsuariosModel() {
-		return listaUsuariosModel;
-	}
-
-	public void setListaUsuariosModel(UsuarioDataModel listaUsuariosModel) {
-		this.listaUsuariosModel = listaUsuariosModel;
 	}
 
 	public void limpaFiltro() {
@@ -92,32 +82,39 @@ public class UsuarioMB implements Serializable{
 			return false;
 	}
 	
-	public String salvar() {
+	private void limpaTelaManter() {
+		this.senha = "";
+		this.confirmeSenha = "";	
+		
+		this.usuarioEdicao = new TbUsuario();
+	}
+	
+	public String salvarAtualizar() {
 		try {
 			if (this.validarSenha()) {
 				this.usuarioEdicao.setSenhaUsuario(this.senha);
-				this.usuarioFacade.saveTbUsuario(usuarioEdicao);
 				
-				this.senha = "";
-				this.confirmeSenha = "";
+				if (this.usuarioEdicao.getIdUsuario() == null)
+					this.usuarioFacade.saveTbUsuario(usuarioEdicao);
+				else
+					this.usuarioFacade.updateTbUsuario(usuarioEdicao);
 				
-				PrimeFaces.current().executeScript("PF('statusDialog').hide();");	
+				this.limpaTelaManter();
 				
+				PrimeFaces.current().executeScript(Constantes.PF_DIALOG);	
 				MessageUtil.sucess(Constantes.MSG_SUCCESS_HEADER,  Constantes.MSG_SALVAR_USUARIO);					
 				
 				return Constantes.PAGINA_LISTAR_USUARIOS; 				
 			}else {
-				this.senha = "";
-				this.confirmeSenha = "";
+				this.limpaTelaManter();
 				
-				PrimeFaces.current().executeScript("PF('statusDialog').hide();");	
-				
+				PrimeFaces.current().executeScript(Constantes.PF_DIALOG);	
 				MessageUtil.warn(Constantes.MSG_WARN_HEADER,  Constantes.MSG_WARN);	
 				
 				return Constantes.PAGINA_MANTER_USUARIO;
 			}
 		} catch (Exception e) {
-			PrimeFaces.current().executeScript("PF('statusDialog').hide();");		
+			PrimeFaces.current().executeScript(Constantes.PF_DIALOG);		
 			
 			MessageUtil.error(Constantes.MSG_ERROR_HEADER, Constantes.MSG_ERRO_SISTEMA);	
 			e.printStackTrace();
@@ -131,6 +128,13 @@ public class UsuarioMB implements Serializable{
 		return filtroLogin;
 	}
 
+	public UsuarioDataModel getListaUsuariosModel() {
+		return listaUsuariosModel;
+	}
+
+	public void setListaUsuariosModel(UsuarioDataModel listaUsuariosModel) {
+		this.listaUsuariosModel = listaUsuariosModel;
+	}
 	public void setFiltroLogin(String filtroLogin) {
 		this.filtroLogin = filtroLogin;
 	}

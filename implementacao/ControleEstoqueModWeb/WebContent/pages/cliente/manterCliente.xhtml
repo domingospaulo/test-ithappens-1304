@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:body>
+	<ui:composition template="/pages/template/template.xhtml">
+		<ui:define name="content">
+			<h:form id="formCadastro">
+				
+				<p:growl id="mensagem" showDetail="true" />
+				
+			    <p:panel header="Cadastro Cliente">
+				    <f:facet name="actions">
+				    	<p:commandButton icon="ui-icon-arrowreturn-1-w" style="float: right;" value="Voltar" 
+				    					immediate="true" action="#{clienteMB.voltarManterCliente()}"/>
+				    </f:facet>
+			    	
+					<p:panelGrid style="margin-top:20px; width:447px;" styleClass="semBorda">				
+					    <p:row>
+							<p:column style="font-weight: bold;">
+								<h:outputLabel value="Nome:" for="nome"/>
+							</p:column>
+					        <p:column style="font-weight: bold; ">
+					        	<p:inputText id="nome" value="#{clienteMB.clienteEdicao.nomeCliente}" 
+					        		required="true"
+					        	 	requiredMessage="Informe o Nome!"
+					        		style="width:246px;"
+					        		onkeypress="return event.keyCode != 13"/>
+					        </p:column>	
+					    </p:row>					    
+					    <p:row>
+							<p:column style="font-weight: bold;">
+								<h:outputLabel value="Email:" for="email"/>
+							</p:column>
+					        <p:column style="font-weight: bold; ">
+					        	<p:inputText id="email" value="#{clienteMB.clienteEdicao.emailCliente}" 
+					        		required="true"
+					        	 	requiredMessage="Informe o E-mail!"
+					        	 	validatorMessage="Email inválido"
+					        		style="width:246px;"
+					        		onkeypress="return event.keyCode != 13">
+  											<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />					        		
+					        		</p:inputText>
+					        </p:column>	
+					    </p:row>
+					    <p:row>
+							<p:column style="font-weight: bold;">
+								<h:outputLabel value="Telefone:" for="telefone"/>
+							</p:column>
+					        <p:column style="font-weight: bold; ">
+					        	<p:inputMask id="txtTelefoneCel" value="#{clienteMB.clienteEdicao.telefoneCliente}" 
+						        		mask="(99) 99999-9999" 
+						        		style="width:246px;"
+						        		required="true" 
+										requiredMessage="Informe seu telefone celular."/>
+					        </p:column>	
+					    </p:row>	
+					    <p:row>
+							<p:column style="font-weight: bold;">
+								<h:outputLabel value="Tipo Cliente:" for="tipo"/>
+							</p:column>
+					        <p:column style="font-weight: bold; ">
+						        <p:selectOneMenu id="tipo" value="#{clienteMB.tipoCliente}">
+						            <f:selectItems value="#{clienteMB.listaTipoCliente}" />
+						            
+						            <p:ajax event="change" update="@all"></p:ajax>
+						        </p:selectOneMenu>
+					        </p:column>	
+					    </p:row>
+					    <p:row rendered="#{clienteMB.tipoCliente == '1'}">
+							<p:column style="font-weight: bold;">
+								<h:outputLabel value="CPF:" for="cpf"/>
+							</p:column>
+					        <p:column style="font-weight: bold; ">
+								<p:inputMask mask="999.999.999-99" id="cpf"
+										style="width:246px;"
+										value="#{clienteMB.clienteEdicao.documentoCliente}" 
+										requiredMessage="Informe seu documento de identificação" 
+										required="true"/>
+					        </p:column>	
+					    </p:row>
+					    <p:row rendered="#{clienteMB.tipoCliente == '2'}">
+							<p:column style="font-weight: bold;">
+								<h:outputLabel value="CNPJ:" for="cnpj"/>
+							</p:column>
+					        <p:column style="font-weight: bold; ">
+								<p:inputMask mask="99.999.999/9999-99"  id="CNPJ"
+										style="width:246px;"
+										value="#{clienteMB.clienteEdicao.documentoCliente}" 
+										requiredMessage="Informe seu documento de identificação" 
+										required="true"/>
+					        </p:column>	
+					    </p:row>						    					    					    				    					    
+					</p:panelGrid>	
+					
+					<p:panelGrid style="margin-top:20px; ">
+					    <f:facet name="header">
+					    	<p:row>
+					            <p:column colspan="5" style="width:371px; ">
+					            	<p:commandButton 
+					            		 icon="ui-icon-disk" 
+						            	 title="Salvar" 
+						            	 action="#{clienteMB.salvarAtualizar()}"
+						            	 update="@all"
+						            	 ajax="false"
+						            	 value="Salvar" 
+						            	 style="float:right;"/>
+					            </p:column>
+					        </p:row>
+					    </f:facet>				
+					 </p:panelGrid>	
+			    </p:panel>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</h:html>
