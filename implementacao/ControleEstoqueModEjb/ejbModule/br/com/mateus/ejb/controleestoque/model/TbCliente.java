@@ -37,7 +37,15 @@ public class TbCliente implements Serializable {
 	   public TbCliente() {
 	   }
 	   
-	   public String getEmailCliente() {
+	   public Integer getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public String getEmailCliente() {
 		   return this.emailCliente;
 	   }
 

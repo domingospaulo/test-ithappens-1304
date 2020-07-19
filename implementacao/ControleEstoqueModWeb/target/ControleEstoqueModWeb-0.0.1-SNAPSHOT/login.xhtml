@@ -36,19 +36,16 @@
 							<p:panel style="margin-top: 0px !important;">
 								<p:commandButton
 												 value="Entrar" 
-												 update="@all" 
+												 update="@form" 
+												 ajax="true"
 												 style="margin-right: 10px;"
 												 action="#{loginMB.logar()}"/>
-						
 						 </p:panel>
 						</p:column>
 					</p:row>
 				</p:panelGrid>
-			
 			</div>
-
 		</h:form>
 	</h:panelGroup>
 </h:body>
-
 </h:html>

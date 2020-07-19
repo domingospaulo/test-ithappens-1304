@@ -23,7 +23,15 @@ public class TbStatusItensPedido implements Serializable {
 	   public TbStatusItensPedido() {
 	   }
 	   
-	   public Integer getDescricaoStatusItensPedido() {
+	   public Integer getIdStatusItensPedido() {
+		return idStatusItensPedido;
+	}
+
+	public void setIdStatusItensPedido(Integer idStatusItensPedido) {
+		this.idStatusItensPedido = idStatusItensPedido;
+	}
+
+	public Integer getDescricaoStatusItensPedido() {
 		   return this.descricaoStatusItensPedido;
 	   }
 

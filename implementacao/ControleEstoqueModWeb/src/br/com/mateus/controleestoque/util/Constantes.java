@@ -5,8 +5,8 @@ public class Constantes {
 	//NAVEGAÇÃO
 	public static final String PAGINA_PRINCIPAL = "/pages/principal.jsf?faces-redirect=true";
 	public static final String PAGINA_LOGIN = "/login.jsf?faces-redirect=true";
-	public static final String PAGINA_MANTER_USUARIO = "/pages/manterUsuario.jsf?faces-redirect=true";
-	public static final String PAGINA_LISTAR_USUARIOS = "/pages/listarUsuarios.jsf?faces-redirect=true";
+	public static final String PAGINA_MANTER_USUARIO = "/pages/usuario/manterUsuario.jsf?faces-redirect=true";
+	public static final String PAGINA_LISTAR_USUARIOS = "/pages/usuario/listarUsuarios.jsf?faces-redirect=true";
 	
 	//MENSAGENS GERAL
 	public static final String MSG_ERRO_SISTEMA = "Falha no sistema. Tente novamente ou entre em contato com o administrador !";

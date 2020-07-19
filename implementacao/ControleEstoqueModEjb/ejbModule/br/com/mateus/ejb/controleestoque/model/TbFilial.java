@@ -26,7 +26,15 @@ public class TbFilial implements Serializable {
 	   public TbFilial() {
 	   }
 	   
-	   public String getTelefoneFilial() {
+	   public Integer getIdFilial() {
+		return idFilial;
+	}
+
+	public void setIdFilial(Integer idFilial) {
+		this.idFilial = idFilial;
+	}
+
+	public String getTelefoneFilial() {
 		   return this.telefoneFilial;
 	   }
 

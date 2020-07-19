@@ -23,7 +23,15 @@ public class TbFormaPagamento implements Serializable {
 	   public TbFormaPagamento() {
 	   }
 	   
-	   public String getDescricaoFormaPagamento() {
+	   public Integer getIdFormaPagamento() {
+		return idFormaPagamento;
+	}
+
+	public void setIdFormaPagamento(Integer idFormaPagamento) {
+		this.idFormaPagamento = idFormaPagamento;
+	}
+
+	public String getDescricaoFormaPagamento() {
 		   return this.descricaoFormaPagamento;
 	   }
 

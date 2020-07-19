@@ -35,7 +35,15 @@ public class TbPrecoProduto implements Serializable {
 	   public TbPrecoProduto() {
 	   }
 	   
-	   public float getPrecoUnitario() {
+	   public Integer getIdPrecoProduto() {
+		return idPrecoProduto;
+	}
+
+	public void setIdPrecoProduto(Integer idPrecoProduto) {
+		this.idPrecoProduto = idPrecoProduto;
+	}
+
+	public float getPrecoUnitario() {
 		   return this.precoUnitario;
 	   }
 

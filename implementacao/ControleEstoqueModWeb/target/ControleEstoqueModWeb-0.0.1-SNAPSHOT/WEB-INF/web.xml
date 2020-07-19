@@ -19,7 +19,7 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>redmond</param-value>
 	</context-param>
-<!--  
+	
 	<filter>
 	  <filter-name>AdminFilter</filter-name>
 	  <filter-class>br.com.mateus.controleestoque.filter.AdminFilter</filter-class>
@@ -30,7 +30,7 @@
 	  <filter-name>AdminFilter</filter-name>
 	  <url-pattern>/pages/*</url-pattern>
 	</filter-mapping> 	
--->	
+
 
 	<session-config>
 		<session-timeout>30</session-timeout>

@@ -96,7 +96,7 @@
 							
 							<p:column style="width:32px;text-align: center">
 					            <p:commandButton 
-					            	action="/pages/manterUsuario.jsf?faces-redirect=true" 
+					            	action="#{usuarioMB.editarUsuario()}" 
 					            	icon="ui-icon-pencil" 
 					            	title="Editar Usuário">
 					                	<f:setPropertyActionListener value="#{usuarios}" target="#{usuarioMB.usuarioEdicao}" />

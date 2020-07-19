@@ -33,7 +33,15 @@ public class TbEstoque implements Serializable {
 	   public TbEstoque() {
 	   }
 	   
-	   public Integer getQuantidadeEstoque() {
+	   public Integer getIdEstoque() {
+		return idEstoque;
+	}
+
+	public void setIdEstoque(Integer idEstoque) {
+		this.idEstoque = idEstoque;
+	}
+
+	public Integer getQuantidadeEstoque() {
 		   return this.quantidadeEstoque;
 	   }
 

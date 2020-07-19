@@ -20,7 +20,15 @@ public class TbItensPedido implements Serializable {
 	   @Column(name="id_itens_pedido")
 	   private Integer idItensPedido;
 	   
-	   @Column(name="quantidade_itens_pedido")
+	   public Integer getIdItensPedido() {
+		return idItensPedido;
+	}
+
+	public void setIdItensPedido(Integer idItensPedido) {
+		this.idItensPedido = idItensPedido;
+	}
+
+	@Column(name="quantidade_itens_pedido")
 	   private Integer quantidadeItensPedido;
 	   
 	   @Column(name="valor_total_itens_pedido")

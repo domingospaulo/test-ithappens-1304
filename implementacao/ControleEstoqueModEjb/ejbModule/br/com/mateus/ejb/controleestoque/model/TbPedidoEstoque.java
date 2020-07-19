@@ -26,9 +26,6 @@ public class TbPedidoEstoque implements Serializable {
 	   @Column(name="data_pedido")
 	   private Date dataPedido;
 	   
-	   @Column(name="id_forma_pagamento")
-	   private Integer idFormaPagamento;
-	   
 	   @Column(name="observacao_pedido_estoque")
 	   private String observacaoPedidoEstoque;
 	   
@@ -52,6 +49,10 @@ public class TbPedidoEstoque implements Serializable {
 	   @JoinColumn(name="id_tipo_pedido")
 	   private TbTipoPedido idTipoPedidoFK;
 	   
+	   @ManyToOne
+	   @JoinColumn(name="id_forma_pagamento")
+	   private TbFormaPagamento idFormaPagamento;
+	   	   
 	   public TbPedidoEstoque() {
 	   }
 	   
@@ -63,15 +64,23 @@ public class TbPedidoEstoque implements Serializable {
 		   this.dataPedido = dataPedido;
 	   }
 	   
-	   public Integer getIdFormaPagamento() {
-		   return this.idFormaPagamento;
-	   }
+	   public Integer getIdPedidoEstoque() {
+		return idPedidoEstoque;
+	}
 
-	   public void setIdFormaPagamento(Integer idFormaPagamento) {
-		   this.idFormaPagamento = idFormaPagamento;
-	   }
-	   
-	   public String getObservacaoPedidoEstoque() {
+	public void setIdPedidoEstoque(Integer idPedidoEstoque) {
+		this.idPedidoEstoque = idPedidoEstoque;
+	}
+
+	public TbFormaPagamento getIdFormaPagamento() {
+		return idFormaPagamento;
+	}
+
+	public void setIdFormaPagamento(TbFormaPagamento idFormaPagamento) {
+		this.idFormaPagamento = idFormaPagamento;
+	}
+
+	public String getObservacaoPedidoEstoque() {
 		   return this.observacaoPedidoEstoque;
 	   }
 

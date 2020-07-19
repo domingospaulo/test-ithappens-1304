@@ -23,7 +23,15 @@ public class TbStatusPedido implements Serializable {
 	   public TbStatusPedido() {
 	   }
 	   
-	   public String getDescricaoStatusPedido() {
+	   public Integer getIdStatusPedido() {
+		return idStatusPedido;
+	}
+
+	public void setIdStatusPedido(Integer idStatusPedido) {
+		this.idStatusPedido = idStatusPedido;
+	}
+
+	public String getDescricaoStatusPedido() {
 		   return this.descricaoStatusPedido;
 	   }
 

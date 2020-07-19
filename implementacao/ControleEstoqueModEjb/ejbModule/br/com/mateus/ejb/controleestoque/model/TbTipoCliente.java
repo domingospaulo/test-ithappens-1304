@@ -23,7 +23,15 @@ public class TbTipoCliente implements Serializable {
 	   public TbTipoCliente() {
 	   }
 	   
-	   public String getDescricaoTipoCliente() {
+	   public Integer getIdTipoCliente() {
+		return idTipoCliente;
+	}
+
+	public void setIdTipoCliente(Integer idTipoCliente) {
+		this.idTipoCliente = idTipoCliente;
+	}
+
+	public String getDescricaoTipoCliente() {
 		   return this.descricaoTipoCliente;
 	   }
 

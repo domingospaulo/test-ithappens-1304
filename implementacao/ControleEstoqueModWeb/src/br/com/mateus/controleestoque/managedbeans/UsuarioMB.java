@@ -46,6 +46,14 @@ public class UsuarioMB implements Serializable{
 		
 		return Constantes.PAGINA_MANTER_USUARIO; 
 	}
+	
+	public String editarUsuario() {
+		return Constantes.PAGINA_MANTER_USUARIO; 
+	}
+	
+	public String voltarManterUsuario() {
+		return Constantes.PAGINA_LISTAR_USUARIOS; 	
+	}
 
 	public void filtrar(){
 		try {

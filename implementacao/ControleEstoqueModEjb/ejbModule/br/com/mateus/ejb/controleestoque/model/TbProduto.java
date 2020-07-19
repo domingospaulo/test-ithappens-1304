@@ -29,7 +29,15 @@ public class TbProduto implements Serializable {
 	   public TbProduto() {
 	   }
 	   
-	   public String getDescricaoProduto() {
+	   public Integer getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(Integer idProduto) {
+		this.idProduto = idProduto;
+	}
+
+	public String getDescricaoProduto() {
 		   return this.descricaoProduto;
 	   }
 
