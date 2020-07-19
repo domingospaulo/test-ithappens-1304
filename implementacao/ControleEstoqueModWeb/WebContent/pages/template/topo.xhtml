@@ -13,10 +13,21 @@
 					<h:form  id="formTopo">
 						<p:menubar style="background: rgba(0, 0, 0, 0) none repeat scroll 0 center; color: white; border: 0 none; padding: 0; color: white; 
 							min-width: 400px !important;">
-						    <p:menuitem label="Página Inicial" value="Página Inicial" url="/ControleEstoqueModWeb/pages/principal.jsf">
+						    <p:menuitem label="Página Inicial" icon="pi pi-file" value="Página Inicial" url="/ControleEstoqueModWeb/pages/principal.jsf">
 						    </p:menuitem>
-						    
-							<p:menuitem value="Sair" icon="fa fa-fw fa-sign-out" action="#{loginMB.deslogarSistema()}" style="float: right !important; " >
+										    
+					        <p:submenu label="Administrar" icon="pi pi-pencil">
+					            <p:menuitem value="Usuário" url="/ControleEstoqueModWeb/pages/usuario/listarUsuarios.jsf" icon="pi pi-angle-double-left" />
+					            <p:menuitem value="Cliente" url="#" icon="pi pi-angle-double-right" />
+					            <p:menuitem value="Filial" url="#" icon="pi pi-angle-double-right" />
+				        	</p:submenu>
+										    
+					        <p:submenu label="Pedidos" icon="pi pi-pencil">
+					            <p:menuitem value="Compra" url="#" icon="pi pi-angle-double-left" />
+					            <p:menuitem value="Venda" url="#" icon="pi pi-angle-double-right" />
+				        	</p:submenu>
+				        					        						    
+							<p:menuitem value="Sair" icon="pi pi-times" action="#{loginMB.deslogarSistema()}" style="float: right !important; " >
 						    </p:menuitem>
 						</p:menubar>
 						</h:form>

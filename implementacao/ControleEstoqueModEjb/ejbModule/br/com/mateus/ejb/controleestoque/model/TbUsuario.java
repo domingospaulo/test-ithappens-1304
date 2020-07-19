@@ -52,5 +52,12 @@ public class TbUsuario implements Serializable {
 	   public void setSenhaUsuario(String senhaUsuario) {
 		   this.senhaUsuario = senhaUsuario;
 	   }
-	   
+
+		public Integer getIdUsuario() {
+			return idUsuario;
+		}
+	
+		public void setIdUsuario(Integer idUsuario) {
+			this.idUsuario = idUsuario;
+		}
 }

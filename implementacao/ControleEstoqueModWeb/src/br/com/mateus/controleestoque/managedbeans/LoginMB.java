@@ -6,6 +6,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
+
+import br.com.mateus.controleestoque.util.Constantes;
 import br.com.mateus.ejb.controleestoque.model.TbUsuario;
 
 @Named("loginMB")
@@ -27,7 +29,7 @@ public class LoginMB implements Serializable{
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("tbUsuario", new TbUsuario());
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedIn", this.loggedIn);
 		
-		return "/pages/principal.jsf?faces-redirect=true";	
+		return Constantes.PAGINA_PRINCIPAL;	
 	}
 	
 	public String deslogarSistema(){
@@ -37,7 +39,7 @@ public class LoginMB implements Serializable{
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("tbUsuario", null);
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedIn", this.loggedIn);
 		
-        FacesMessage msg = new FacesMessage("Você Saiu do Controle de Estoque!", "Logoff");
+        FacesMessage msg = new FacesMessage(Constantes.MSG_LOGOFF, Constantes.MSG_LOGOFF_HEADER );
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
         FacesContext.getCurrentInstance().addMessage(null, msg);
 		
@@ -45,7 +47,7 @@ public class LoginMB implements Serializable{
 		session.setAttribute("loginMB", null);
 		session.invalidate();
 		
-		return "/login.jsf?faces-redirect=true";
+		return Constantes.PAGINA_LOGIN;
 	}
 
 	public String getLogin() {
