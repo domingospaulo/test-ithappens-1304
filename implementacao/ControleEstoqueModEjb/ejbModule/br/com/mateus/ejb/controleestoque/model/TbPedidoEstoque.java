@@ -10,14 +10,14 @@ import br.com.mateus.ejb.controleestoque.model.TbUsuario;
 import br.com.mateus.ejb.controleestoque.model.TbTipoPedido;
 
 @Entity
-@Table(name="tb_pedido_estoque")
+@Table(name="tb_pedido_estoque", schema = "public")
 @NamedQueries({
 	   @NamedQuery(name="TbPedidoEstoque.findAll", query="SELECT t FROM TbPedidoEstoque t")
 })
 public class TbPedidoEstoque implements Serializable {
 	   private static final long serialVersionUID = 1L;
 	   
-       @EmbeddedId
+	   @Id
 	   @SequenceGenerator(name="TB_PEDIDO_ESTOQUE_ID_PEDIDO_ESTOQUE_SEQ_GENERATOR", sequenceName="TB_PEDIDO_ESTOQUE_ID_PEDIDO_ESTOQUE_SEQ",allocationSize=1)
 	   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_PEDIDO_ESTOQUE_ID_PEDIDO_ESTOQUE_SEQ_GENERATOR")
 	   @Column(name="id_pedido_estoque")

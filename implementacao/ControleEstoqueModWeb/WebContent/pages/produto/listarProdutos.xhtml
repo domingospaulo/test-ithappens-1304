@@ -10,15 +10,15 @@
 	<ui:composition template="/pages/template/template.xhtml">
 		<ui:define name="content">
 				
-			<p:panel id="cadUsuario">
-				<h:form id="formUsuarios">
+			<p:panel id="cadProduto">
+				<h:form id="formProdutos">
 					
 					<p:growl id="msgs" showDetail="true"/>
 					
-					<p:panel id="panelUsuarios" header="Cadastro Produtos" styleClass="semBorda" >
+					<p:panel id="panelProdutos" header="Cadastro Produtos" styleClass="semBorda" >
 					
 					    <f:facet name="actions">
-					    	<p:commandButton icon="ui-icon-document" style="float: right; margin-left: 6px;" value="Novo"  action="#{usuarioMB.novoUsuario()}"/>
+					    	<p:commandButton icon="ui-icon-document" style="float: right; margin-left: 6px;" value="Novo"  action="#{produtoMB.novoProduto()}"/>
 					    </f:facet>	
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       				
 						<p:panelGrid  columns="1" style="width:100%; border: none !important;">
@@ -26,17 +26,17 @@
 					            <p:panelGrid  columns="8"  styleClass="semBorda" style="margin-top:8px; margin-bottom:8px; width: 200px;">
 
 									<p:column style="font-weight: bold;">
-										<h:outputLabel value="Login:" for="login"/>
+										<h:outputLabel value="Código de Barras:" for="codigoBarras"/>
 									</p:column>
 							        <p:column style="font-weight: bold; ">
-							        	<p:inputText id="login" value="#{usuarioMB.filtroLogin}" style=" width: 140px;" onkeypress="return event.keyCode != 13"/>
+							        	<p:inputText id="codigoBarras" value="#{produtoMB.filtroCodigoBarras}" style=" width: 140px;" onkeypress="return event.keyCode != 13"/>
 							        </p:column>		
 							        
 									<p:column style="font-weight: bold;">
-										<h:outputLabel value="Nome:" for="nome"/>
+										<h:outputLabel value="Descrição:" for="descricao"/>
 									</p:column>
 							        <p:column style="font-weight: bold;">
-							        	<p:inputText id="nome" value="#{usuarioMB.filtroNome}"  style=" width: 140px;" 
+							        	<p:inputText id="descricao" value="#{produtoMB.filtroDescricao}"  style=" width: 140px;" 
 							        		onkeypress="return event.keyCode != 13"/>
 							        </p:column>		
 							        							        							        
@@ -44,20 +44,20 @@
 										<p:commandButton icon="ui-icon-search" 
 														 title="Pesquisar" 
 														 value="Pesquisar" 
-									            	 	 action="#{usuarioMB.filtrar()}"
+									            	 	 action="#{produtoMB.filtrar()}"
 									            	 	 style="margin-left: 50px; width: 148px;"
 														 styleClass="btnVerde" 
 														 onclick="PF('statusDialog').show();" 
-									            	 	 update=":formUsuarios"/>
+									            	 	 update=":formProdutos"/>
 									</p:column>
 							        <p:column style="font-weight: bold;">
 										<p:commandButton icon="ui-icon-refresh" 
 														 title="Limpar Pesquisa" 
 														 value="Limpar Pesquisa" 
-														 action="#{usuarioMB.limpaFiltro()}"
+														 action="#{produtoMB.limpaFiltro()}"
 														 styleClass="btnAmarelo" 
 														 style="margin-left: 10px; width: 148px;"  
-														 update=":formUsuarios"/>
+														 update=":formProdutos"/>
 							        </p:column>							        				        
 					            </p:panelGrid>
 							 </p:panel>
@@ -66,9 +66,9 @@
 			            
 		            <p:panelGrid  columns="1" style="width:100%; border: none !important; margin-top: 8px;">				
 						<p:dataTable 
-							value="#{usuarioMB.listaUsuariosModel}"
+							value="#{produtoMB.listaProdutosModel}"
 							id="dataTableList"
-							var="usuarios" 
+							var="produtos" 
 							
 							lazy="true"
 							emptyMessage="Não há dados a serem mostrados"
@@ -82,32 +82,32 @@
 							widgetVar="gradeBook">
 							
 							<f:facet name="header">
-					            Lista de Usuários
+					            Lista de Produtos
 					        </f:facet>
 							
 							<p:columnGroup type="header">
 								<p:row>
 									<p:column headerText="Ação"/>
-									<p:column headerText="Login" />
-									<p:column headerText="Nome" />
+									<p:column headerText="Código de Barras" />
+									<p:column headerText="Descrição" />
 								</p:row>
 							</p:columnGroup>
 							
 							<p:column style="width:32px;text-align: center">
 					            <p:commandButton 
-					            	action="#{usuarioMB.editarUsuario()}" 
+					            	action="#{produtoMB.editarProduto()}" 
 					            	icon="ui-icon-pencil" 
-					            	title="Editar Usuário">
-					                	<f:setPropertyActionListener value="#{usuarios}" target="#{usuarioMB.usuarioEdicao}" />
+					            	title="Editar Produto">
+					                	<f:setPropertyActionListener value="#{produtos}" target="#{produtoMB.produtoEdicao}" />
 					            </p:commandButton>	
 					        </p:column>	
 					        
 							<p:column>
-								<h:outputText value="#{usuarios.login}" style="float:right;"/>
+								<h:outputText value="#{produtos.codigoBarras}" style="float:right;"/>
 							</p:column>
 							
 							<p:column>
-								<h:outputText value="#{usuarios.nome}" style="float:right;"/>
+								<h:outputText value="#{produtos.descricaoProduto}" style="float:right;"/>
 							</p:column>
 		
 							<f:facet name="footer">

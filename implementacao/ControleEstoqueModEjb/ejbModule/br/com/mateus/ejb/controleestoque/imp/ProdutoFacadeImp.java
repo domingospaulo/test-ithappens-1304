@@ -5,6 +5,7 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import br.com.mateus.ejb.controleestoque.facade.ProdutoFacade;
+import br.com.mateus.ejb.controleestoque.model.TbPrecoProduto;
 import br.com.mateus.ejb.controleestoque.model.TbProduto;
 import br.com.mateus.ejb.controleestoque.dao.TbProdutoDAO;
 
@@ -20,8 +21,8 @@ public class ProdutoFacadeImp  implements ProdutoFacade{
 	   }
 	   
 	   @Override
-	   public void saveTbProduto(TbProduto tbProduto) {
-	   	   tbProdutoDAO.save(tbProduto);
+	   public void saveTbProduto(TbProduto tbProduto, TbPrecoProduto tbPrecoProduto) {
+	   	   tbProdutoDAO.save(tbProduto, tbPrecoProduto);
 	   }
 	   	  
 	   @Override

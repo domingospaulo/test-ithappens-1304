@@ -10,15 +10,15 @@
 	<ui:composition template="/pages/template/template.xhtml">
 		<ui:define name="content">
 				
-			<p:panel id="cadUsuario">
-				<h:form id="formUsuarios">
+			<p:panel id="cadPedido">
+				<h:form id="formPedidos">
 					
 					<p:growl id="msgs" showDetail="true"/>
 					
-					<p:panel id="panelUsuarios" header="Consulta Pedidos" styleClass="semBorda" >
+					<p:panel id="panelPedidos" header="Consulta Pedidos" styleClass="semBorda" >
 					
 					    <f:facet name="actions">
-					    	<p:commandButton icon="ui-icon-document" style="float: right; margin-left: 6px;" value="Novo"  action="#{usuarioMB.novoUsuario()}"/>
+					    	<p:commandButton icon="ui-icon-document" style="float: right; margin-left: 6px;" value="Novo"  action="#{pedidoMB.novoPedido()}"/>
 					    </f:facet>	
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       				
 						<p:panelGrid  columns="1" style="width:100%; border: none !important;">
@@ -29,14 +29,14 @@
 										<h:outputLabel value="Login:" for="login"/>
 									</p:column>
 							        <p:column style="font-weight: bold; ">
-							        	<p:inputText id="login" value="#{usuarioMB.filtroLogin}" style=" width: 140px;" onkeypress="return event.keyCode != 13"/>
+							        	<p:inputText id="login" value="#{pedidoMB.filtroLogin}" style=" width: 140px;" onkeypress="return event.keyCode != 13"/>
 							        </p:column>		
 							        
 									<p:column style="font-weight: bold;">
 										<h:outputLabel value="Nome:" for="nome"/>
 									</p:column>
 							        <p:column style="font-weight: bold;">
-							        	<p:inputText id="nome" value="#{usuarioMB.filtroNome}"  style=" width: 140px;" 
+							        	<p:inputText id="nome" value="#{pedidoMB.filtroNome}"  style=" width: 140px;" 
 							        		onkeypress="return event.keyCode != 13"/>
 							        </p:column>		
 							        							        							        
@@ -44,20 +44,20 @@
 										<p:commandButton icon="ui-icon-search" 
 														 title="Pesquisar" 
 														 value="Pesquisar" 
-									            	 	 action="#{usuarioMB.filtrar()}"
+									            	 	 action="#{pedidoMB.filtrar()}"
 									            	 	 style="margin-left: 50px; width: 148px;"
 														 styleClass="btnVerde" 
 														 onclick="PF('statusDialog').show();" 
-									            	 	 update=":formUsuarios"/>
+									            	 	 update=":formPedidos"/>
 									</p:column>
 							        <p:column style="font-weight: bold;">
 										<p:commandButton icon="ui-icon-refresh" 
 														 title="Limpar Pesquisa" 
 														 value="Limpar Pesquisa" 
-														 action="#{usuarioMB.limpaFiltro()}"
+														 action="#{pedidoMB.limpaFiltro()}"
 														 styleClass="btnAmarelo" 
 														 style="margin-left: 10px; width: 148px;"  
-														 update=":formUsuarios"/>
+														 update=":formPedidos"/>
 							        </p:column>							        				        
 					            </p:panelGrid>
 							 </p:panel>
@@ -66,9 +66,9 @@
 			            
 		            <p:panelGrid  columns="1" style="width:100%; border: none !important; margin-top: 8px;">				
 						<p:dataTable 
-							value="#{usuarioMB.listaUsuariosModel}"
+							value="#{pedidoMB.listaPedidosModel}"
 							id="dataTableList"
-							var="usuarios" 
+							var="pedidos" 
 							
 							lazy="true"
 							emptyMessage="Não há dados a serem mostrados"
@@ -95,19 +95,19 @@
 							
 							<p:column style="width:32px;text-align: center">
 					            <p:commandButton 
-					            	action="#{usuarioMB.editarUsuario()}" 
+					            	action="#{pedidoMB.editarPedido()}" 
 					            	icon="ui-icon-pencil" 
 					            	title="Editar Usuário">
-					                	<f:setPropertyActionListener value="#{usuarios}" target="#{usuarioMB.usuarioEdicao}" />
+					                	<f:setPropertyActionListener value="#{pedidos}" target="#{pedidoMB.pedidoEdicao}" />
 					            </p:commandButton>	
 					        </p:column>	
 					        
 							<p:column>
-								<h:outputText value="#{usuarios.login}" style="float:right;"/>
+								<h:outputText value="#{pedidos.login}" style="float:right;"/>
 							</p:column>
 							
 							<p:column>
-								<h:outputText value="#{usuarios.nome}" style="float:right;"/>
+								<h:outputText value="#{pedidos.nome}" style="float:right;"/>
 							</p:column>
 		
 							<f:facet name="footer">

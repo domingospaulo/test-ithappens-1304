@@ -45,8 +45,7 @@ public class ClienteMB implements Serializable{
 	}
 	
 	public String novoCliente(){
-		this.clienteEdicao = new TbCliente();
-		this.tipoCliente = "1";
+		this.limpaTelaManter();
 		
 		return Constantes.PAGINA_MANTER_CLIENTE; 
 	}

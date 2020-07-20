@@ -5,14 +5,14 @@ import javax.persistence.*;
 import br.com.mateus.ejb.controleestoque.model.TbTipoCliente;
 
 @Entity
-@Table(name="tb_cliente")
+@Table(name="tb_cliente", schema = "public")
 @NamedQueries({
 	   @NamedQuery(name="TbCliente.findAll", query="SELECT t FROM TbCliente t")
 })
 public class TbCliente implements Serializable {
 	   private static final long serialVersionUID = 1L;
 	   
-       @EmbeddedId
+	   @Id
 	   @SequenceGenerator(name="TB_CLIENTE_ID_CLIENTE_SEQ_GENERATOR", sequenceName="TB_CLIENTE_ID_CLIENTE_SEQ",allocationSize=1)
 	   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_CLIENTE_ID_CLIENTE_SEQ_GENERATOR")
 	   @Column(name="id_cliente")

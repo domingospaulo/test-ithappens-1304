@@ -39,9 +39,7 @@ public class UsuarioMB implements Serializable{
 	}
 	
 	public String novoUsuario(){
-		this.usuarioEdicao = new TbUsuario();
-		this.senha = "";
-		this.confirmeSenha = "";
+		this.limpaTelaManter();
 		
 		return Constantes.PAGINA_MANTER_USUARIO; 
 	}

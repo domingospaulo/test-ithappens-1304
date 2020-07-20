@@ -6,14 +6,14 @@ import br.com.mateus.ejb.controleestoque.model.TbFilial;
 import br.com.mateus.ejb.controleestoque.model.TbProduto;
 
 @Entity
-@Table(name="tb_estoque")
+@Table(name="tb_estoque", schema = "public")
 @NamedQueries({
 	   @NamedQuery(name="TbEstoque.findAll", query="SELECT t FROM TbEstoque t")
 })
 public class TbEstoque implements Serializable {
 	   private static final long serialVersionUID = 1L;
 	   
-       @EmbeddedId
+	   @Id
 	   @SequenceGenerator(name="TB_ESTOQUE_ID_ESTOQUE_SEQ_GENERATOR", sequenceName="TB_ESTOQUE_ID_ESTOQUE_SEQ",allocationSize=1)
 	   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_ESTOQUE_ID_ESTOQUE_SEQ_GENERATOR")
 	   @Column(name="id_estoque")

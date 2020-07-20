@@ -9,6 +9,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
+import br.com.mateus.ejb.controleestoque.model.TbPrecoProduto;
+import br.com.mateus.ejb.controleestoque.model.TbProduto;
+
 public abstract class GenericDAO<T> {
 	private final static String UNIT_NAME = "cePu";
 	   
@@ -35,7 +38,22 @@ public abstract class GenericDAO<T> {
 	        em.clear();	
 		}		
 	}
-
+	
+	public void save(TbProduto entityFirst,TbPrecoProduto entitySecond) {
+		try {
+			em.persist(entityFirst);
+			em.persist(entitySecond);
+			
+	        em.flush();
+	        em.clear();			
+		} catch (NoResultException ne) {
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+	        em.flush();
+	        em.clear();	
+		}		
+	}
 	public void delete(Object id, Class<T> classe) {
 		T entityToBeRemoved = null;
 		

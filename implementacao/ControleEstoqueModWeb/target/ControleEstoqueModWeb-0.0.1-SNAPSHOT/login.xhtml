@@ -14,36 +14,38 @@
 		<h:form id="form" >
 			<div id="divTotalLogin">
 				<p:growl id="mensagem" showDetail="true" />
-				<p:panelGrid style=" margin-top: 110px; margin-left: 35px;" >
-					<p:row>
-						<p:column style="text-align: right;">
-							<h:outputLabel value="Login:" />
-						</p:column>
-						<p:column>
-							<p:inputText value="#{loginMB.login}" style="width: 200px; background-color: white !important; color: #004d99 !important"/>
-						</p:column>
-					</p:row>
-					<p:row>
-						<p:column style="text-align: right;">
-							<h:outputLabel value="Senha:" />
-						</p:column>
-						<p:column>
-							<p:password value="#{loginMB.senha}" style="width: 200px; background-color: white !important; color: #004d99 !important" />
-						</p:column>					
-					</p:row>
-					<p:row style="text-align: right;">
-						<p:column colspan="2">
-							<p:panel style="margin-top: 0px !important;">
-								<p:commandButton
-												 value="Entrar" 
-												 update="@form" 
-												 ajax="true"
-												 style="margin-right: 10px;"
-												 action="#{loginMB.logar()}"/>
-						 </p:panel>
-						</p:column>
-					</p:row>
-				</p:panelGrid>
+				<p:panel header="LOGIN">
+					<p:panelGrid style=" margin-top: 110px; margin-left: 35px;" >
+						<p:row>
+							<p:column style="text-align: right;">
+								<h:outputLabel value="Login:" />
+							</p:column>
+							<p:column>
+								<p:inputText value="#{loginMB.login}" style="width: 200px; background-color: white !important; color: #004d99 !important"/>
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column style="text-align: right;">
+								<h:outputLabel value="Senha:" />
+							</p:column>
+							<p:column>
+								<p:password value="#{loginMB.senha}" style="width: 200px; background-color: white !important; color: #004d99 !important" />
+							</p:column>					
+						</p:row>
+						<p:row style="text-align: right;">
+							<p:column colspan="2">
+								<p:panel style="margin-top: 0px !important;">
+									<p:commandButton
+													 value="Entrar" 
+													 update="@form" 
+													 ajax="true"
+													 style="margin-right: 10px;"
+													 action="#{loginMB.logar()}"/>
+							 </p:panel>
+							</p:column>
+						</p:row>
+					</p:panelGrid>
+				</p:panel>
 			</div>
 		</h:form>
 	</h:panelGroup>

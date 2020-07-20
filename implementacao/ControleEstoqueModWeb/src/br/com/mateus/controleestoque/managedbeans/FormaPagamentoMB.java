@@ -37,7 +37,7 @@ public class FormaPagamentoMB implements Serializable{
 	}
 	
 	public String novaFormaPagamento(){
-		this.formaPagamentoEdicao = new TbFormaPagamento();
+		this.limpaTelaManter();
 		
 		return Constantes.PAGINA_MANTER_FORMA_PAGAMENTO; 
 	}

@@ -37,7 +37,7 @@ public class FilialMB implements Serializable{
 	}
 	
 	public String novaFilial(){
-		this.filialEdicao = new TbFilial();
+		this.limpaTelaManter();
 		
 		return Constantes.PAGINA_MANTER_FILIAL; 
 	}

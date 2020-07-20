@@ -6,21 +6,21 @@ import java.util.Date;
 import br.com.mateus.ejb.controleestoque.model.TbProduto;
 
 @Entity
-@Table(name="tb_preco_produto")
+@Table(name="tb_preco_produto", schema = "public")
 @NamedQueries({
 	   @NamedQuery(name="TbPrecoProduto.findAll", query="SELECT t FROM TbPrecoProduto t")
 })
 public class TbPrecoProduto implements Serializable {
 	   private static final long serialVersionUID = 1L;
 	   
-       @EmbeddedId
+	   @Id
 	   @SequenceGenerator(name="TB_PRECO_PRODUTO_ID_PRECO_PRODUTO_SEQ_GENERATOR", sequenceName="TB_PRECO_PRODUTO_ID_PRECO_PRODUTO_SEQ",allocationSize=1)
 	   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_PRECO_PRODUTO_ID_PRECO_PRODUTO_SEQ_GENERATOR")
 	   @Column(name="id_preco_produto")
 	   private Integer idPrecoProduto;
 	   
 	   @Column(name="preco_unitario")
-	   private float precoUnitario;
+	   private double precoUnitario;
 	   
 	   @Column(name="inicio_vigencia")
 	   private Date inicioVigencia;
@@ -28,8 +28,7 @@ public class TbPrecoProduto implements Serializable {
 	   @Column(name="fim_vigencia")
 	   private Date fimVigencia;
 	   
-	   @ManyToOne
-	   @JoinColumn(name="id_produto")
+	   @OneToOne(mappedBy = "idPrecoProduto")
 	   private TbProduto idProdutoFK;
 	   
 	   public TbPrecoProduto() {
@@ -43,11 +42,11 @@ public class TbPrecoProduto implements Serializable {
 		this.idPrecoProduto = idPrecoProduto;
 	}
 
-	public float getPrecoUnitario() {
+	public double getPrecoUnitario() {
 		   return this.precoUnitario;
 	   }
 
-	   public void setPrecoUnitario(float precoUnitario) {
+	   public void setPrecoUnitario(double precoUnitario) {
 		   this.precoUnitario = precoUnitario;
 	   }
 	   

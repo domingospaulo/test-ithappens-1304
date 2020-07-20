@@ -1,3 +1,5 @@
+br/com/mateus/controleestoque/managedbeans/ProdutoMB.class
+br/com/mateus/controleestoque/util/UsuarioDataModel.class
 br/com/mateus/controleestoque/managedbeans/FilialMB.class
 br/com/mateus/controleestoque/managedbeans/UsuarioMB.class
 br/com/mateus/controleestoque/managedbeans/ClienteMB.class
@@ -5,7 +7,5 @@ br/com/mateus/controleestoque/configuracao/MultiPageMessagesSupport.class
 br/com/mateus/controleestoque/managedbeans/PedidoMB.class
 br/com/mateus/controleestoque/util/Constantes.class
 br/com/mateus/controleestoque/filter/AdminFilter.class
-br/com/mateus/controleestoque/managedbeans/ProdutoMB.class
 br/com/mateus/controleestoque/managedbeans/LoginMB.class
 br/com/mateus/controleestoque/util/MessageUtil.class
-br/com/mateus/controleestoque/util/UsuarioDataModel.class

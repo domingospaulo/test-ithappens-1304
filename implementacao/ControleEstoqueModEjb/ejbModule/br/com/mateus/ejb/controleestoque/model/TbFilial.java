@@ -4,14 +4,14 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_filial")
+@Table(name="tb_filial", schema = "public")
 @NamedQueries({
 	   @NamedQuery(name="TbFilial.findAll", query="SELECT t FROM TbFilial t")
 })
 public class TbFilial implements Serializable {
 	   private static final long serialVersionUID = 1L;
 	   
-       @EmbeddedId
+	   @Id
 	   @SequenceGenerator(name="TB_FILIAL_ID_FILIAL_SEQ_GENERATOR", sequenceName="TB_FILIAL_ID_FILIAL_SEQ",allocationSize=1)
 	   @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TB_FILIAL_ID_FILIAL_SEQ_GENERATOR")
 	   @Column(name="id_filial")
