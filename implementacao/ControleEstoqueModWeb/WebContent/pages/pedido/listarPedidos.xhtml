@@ -10,7 +10,7 @@
 	<ui:composition template="/pages/template/template.xhtml">
 		<ui:define name="content">
 				
-			<p:panel id="cadPedido">
+			<p:panel id="cadPedido" style=" min-height: 500px;">
 				<h:form id="formPedidos">
 					
 					<p:growl id="msgs" showDetail="true"/>
@@ -18,7 +18,7 @@
 					<p:panel id="panelPedidos" header="Consulta Pedidos" styleClass="semBorda" >
 					
 					    <f:facet name="actions">
-					    	<p:commandButton icon="ui-icon-document" style="float: right; margin-left: 6px;" value="Novo"  action="#{pedidoMB.novoPedido()}"/>
+					    	<p:commandButton icon="ui-icon-document" style="float: right; margin-left: 6px;" value="Novo"  action="#{pedidoMB.novoPedidoEstoque()}"/>
 					    </f:facet>	
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       				
 						<p:panelGrid  columns="1" style="width:100%; border: none !important;">
@@ -26,17 +26,17 @@
 					            <p:panelGrid  columns="8"  styleClass="semBorda" style="margin-top:8px; margin-bottom:8px; width: 200px;">
 
 									<p:column style="font-weight: bold;">
-										<h:outputLabel value="Login:" for="login"/>
+										<h:outputLabel value="Código:" for="codigo"/>
 									</p:column>
 							        <p:column style="font-weight: bold; ">
-							        	<p:inputText id="login" value="#{pedidoMB.filtroLogin}" style=" width: 140px;" onkeypress="return event.keyCode != 13"/>
+							        	<p:inputText id="codigo" value="#{pedidoMB.filtroCodigo}" style=" width: 140px;" onkeypress="return event.keyCode != 13"/>
 							        </p:column>		
 							        
 									<p:column style="font-weight: bold;">
-										<h:outputLabel value="Nome:" for="nome"/>
+										<h:outputLabel value="Cliente:" for="cliente"/>
 									</p:column>
 							        <p:column style="font-weight: bold;">
-							        	<p:inputText id="nome" value="#{pedidoMB.filtroNome}"  style=" width: 140px;" 
+							        	<p:inputText id="cliente" value="#{pedidoMB.filtroCliente}"  style=" width: 140px;" 
 							        		onkeypress="return event.keyCode != 13"/>
 							        </p:column>		
 							        							        							        
@@ -82,34 +82,49 @@
 							widgetVar="gradeBook">
 							
 							<f:facet name="header">
-					            Lista de Usuários
+					            Lista de Pedidos
 					        </f:facet>
 							
 							<p:columnGroup type="header">
 								<p:row>
 									<p:column headerText="Ação"/>
-									<p:column headerText="Login" />
-									<p:column headerText="Nome" />
+									<p:column headerText="Código" />
+									<p:column headerText="Tipo Pedido" />
+									<p:column headerText="Cliente" />
+									<p:column headerText="Filial" />
+									<p:column headerText="Status Pedido" />
 								</p:row>
 							</p:columnGroup>
 							
 							<p:column style="width:32px;text-align: center">
 					            <p:commandButton 
-					            	action="#{pedidoMB.editarPedido()}" 
+					            	action="#{pedidoMB.visualizarPedidoEstoque()}" 
 					            	icon="ui-icon-pencil" 
-					            	title="Editar Usuário">
-					                	<f:setPropertyActionListener value="#{pedidos}" target="#{pedidoMB.pedidoEdicao}" />
+					            	title="Visualizar Pedido">
+					                	<f:setPropertyActionListener value="#{pedidos}" target="#{pedidoMB.pedidoEstoqueEdicao}" />
 					            </p:commandButton>	
 					        </p:column>	
 					        
 							<p:column>
-								<h:outputText value="#{pedidos.login}" style="float:right;"/>
+								<h:outputText value="#{pedidos.idPedidoEstoque}" style="float:right;"/>
+							</p:column>
+								
+							<p:column>
+								<h:outputText value="#{pedidos.idTipoPedidoFK.descricaoTipoPedido}" style="float:right;"/>
+							</p:column>
+										
+							<p:column>
+								<h:outputText value="#{pedidos.idClienteFK.nomeCliente}" style="float:right;"/>
 							</p:column>
 							
 							<p:column>
-								<h:outputText value="#{pedidos.nome}" style="float:right;"/>
+								<h:outputText value="#{pedidos.idFilialFK.nomeFilial}" style="float:right;"/>
 							</p:column>
-		
+							
+							<p:column>
+								<h:outputText value="#{pedidos.idStatusPedidoFK.descricaoStatusPedido}" style="float:right;"/>
+							</p:column>
+						
 							<f:facet name="footer">
 							</f:facet>
 						</p:dataTable>

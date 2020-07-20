@@ -22,7 +22,7 @@
 				<property name="hibernate.globally_quoted_identifiers" value="true"/>
 	        	<property name="hibernate.hbm2ddl.auto" value="update"/>
 	        	<property name="hibernate.show.sql" value="true"/>
-  			<property name="hibernate.format_sql" value="none"/>
+  				<property name="hibernate.format_sql" value="none"/>
      	</properties>		  
 		</persistence-unit>		 
 </persistence> 	 

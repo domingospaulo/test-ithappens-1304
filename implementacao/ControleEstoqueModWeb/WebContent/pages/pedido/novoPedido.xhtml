@@ -13,80 +13,171 @@
 				
 				<p:growl id="mensagem" showDetail="true" />
 				
-			    <p:panel header="Novo Pedido">
+			    <p:panel header="Novo Pedido" style=" min-height: 500px;">
 				    <f:facet name="actions">
 				    	<p:commandButton icon="ui-icon-arrowreturn-1-w" style="float: right;" value="Voltar" 
-				    					immediate="true" action="#{pedidoMB.voltarManterPedido()}"/>
+				    					immediate="true" action="voltarManterPedidoEstoque"/>
 				    </f:facet>
 			    	
 					<p:panelGrid style="margin-top:20px; width:447px;" styleClass="semBorda">
 					    <p:row>
 							<p:column style="font-weight: bold;">
-								<h:outputLabel value="Login:" for="login"/>
+								<h:outputLabel value="Tipo Pedido:" for="tipoPedido"/>
 							</p:column>
 					        <p:column style="font-weight: bold; ">
-					        	<h:inputHidden value="#{pedidoMB.pedidoEdicao.idPedido}"/>
-					        	<p:inputText id="login" value="#{pedidoMB.pedidoEdicao.loginPedido}"
-					        	 	required="true"
-					        	 	requiredMessage="Informe o Login!"
-					        	 	style="width:246px;"
-					        		onkeypress="return event.keyCode != 13"/>
-					        </p:column>	
-					    </p:row>					
-					    <p:row>
-							<p:column style="font-weight: bold;">
-								<h:outputLabel value="Nome:" for="nome"/>
-							</p:column>
-					        <p:column style="font-weight: bold; ">
-					        	<p:inputText id="nome" value="#{pedidoMB.pedidoEdicao.nomePedido}" 
-					        		required="true"
-					        	 	requiredMessage="Informe o Nome!"
-					        		style="width:246px;"
-					        		onkeypress="return event.keyCode != 13"/>
-					        </p:column>	
-					    </p:row>					    
-					    <p:row>
-							<p:column style="font-weight: bold;">
-								<h:outputLabel value="Senha:" for="senha"/>
-							</p:column>
-					        <p:column style="font-weight: bold;">
-					        	<p:password id="senha" value="#{pedidoMB.senha}" 
-					        		required="true"
-					        	 	requiredMessage="Informe a Senha!"
-					        		style="width:246px;"
-					        		onkeypress="return event.keyCode != 13"/>
+						        <p:selectOneMenu id="tipo" value="#{pedidoMB.tipoPedido}" 
+						        	required="true" 
+						        	requiredMessage="Selecione um Tipo Pedido">
+						            <f:selectItems value="#{pedidoMB.listaTiposPedido}"  
+						            				var="tipoPedido" 
+						            				itemLabel="#{tipoPedido.descricaoTipoPedido}" 
+						            				itemValue="#{tipoPedido.idTipoPedido}" />
+						            
+						            <p:ajax event="change" update="@all"></p:ajax>
+						        </p:selectOneMenu>
 					        </p:column>	
 					    </p:row>
+					    
 					    <p:row>
 							<p:column style="font-weight: bold;">
-								<h:outputLabel value="Confirma Senha:" for="confirmaSenha"/>
+								<h:outputLabel value="Filial:" for="filial"/>
 							</p:column>
-					        <p:column style="font-weight: bold;">
-					        	<p:password id="confirmaSenha" value="#{pedidoMB.confirmeSenha}" 
-					        	 	required="true"
-					        	 	requiredMessage="Confirme a Senha!"					        	
-					        		style="width:246px;"
-					        		onkeypress="return event.keyCode != 13"/>
+					        <p:column style="font-weight: bold; ">
+						        <p:selectOneMenu id="filial" value="#{pedidoMB.filial}" 
+						        	required="true" 
+						        	requiredMessage="Selecione uma Filial">
+						            <f:selectItems value="#{pedidoMB.listaFiliais}" 
+						            				var="filial" 
+						            				itemLabel="#{filial.nomeFilial}" 
+						            				itemValue="#{filial.idFilial}" />
+						            
+						            <p:ajax event="change" update="@all"></p:ajax>
+						        </p:selectOneMenu>
 					        </p:column>	
-					    </p:row>					    
-					</p:panelGrid>	
-					
+					    </p:row>
+					    
+					    <p:row>
+							<p:column style="font-weight: bold;">
+								<h:outputLabel value="Cliente:" for="cliente"/>
+							</p:column>
+					        <p:column style="font-weight: bold; ">
+						        <p:selectOneMenu id="cliente" value="#{pedidoMB.cliente}" 
+						        	required="true" 
+						        	requiredMessage="Selecione um Cliente">
+						            <f:selectItems value="#{pedidoMB.listaClientes}"	
+						            				var="cliente" 
+						            				itemLabel="#{cliente.nomeCliente}" 
+						            				itemValue="#{cliente.idCliente}" />
+						            <p:ajax event="change" update="@all"></p:ajax>
+						        </p:selectOneMenu>
+					        </p:column>	
+					    </p:row>						    					    
+					</p:panelGrid>
+						
 					<p:panelGrid style="margin-top:20px; ">
 					    <f:facet name="header">
 					    	<p:row>
-					            <p:column colspan="5" style="width:371px; ">
-					            	<p:commandButton 
-					            		 icon="ui-icon-disk" 
-						            	 title="Salvar" 
-						            	 action="#{pedidoMB.salvarAtualizar()}"
-						            	 update="@all"
-						            	 ajax="false"
-						            	 value="Salvar" 
-						            	 style="float:right;"/>
+					            <p:column style="width:371px; ">
+									   <p:dataTable id="itens" widgetVar="itensP" var="itemPedido" value="#{pedidoMB.listaItensPedidos}" editable="true" style="margin-bottom:20px">
+									        <f:facet name="header">
+									            Itens Pedido
+									        </f:facet>
+									 
+									 
+									        <p:column headerText="Produto">
+									            <p:cellEditor>
+									                <f:facet name="input"><p:inputText id="modelInput" value="#{itemPedido.quantidadeItensPedido}" style="width:100%"/></f:facet>
+									            </p:cellEditor>
+									        </p:column>
+									 
+									        <p:column headerText="Quantitade">
+									            <p:cellEditor>
+									                <f:facet name="input"><p:inputText value="#{itemPedido.quantidadeItensPedido}" style="width:100%" label="Year"/></f:facet>
+									            </p:cellEditor>
+									        </p:column>
+									 
+									        <p:column headerText="Total">
+									            <p:cellEditor>
+									                <f:facet name="input"><p:inputText value="#{itemPedido.quantidadeItensPedido}" style="width:100%" label="Year"/></f:facet>
+									            </p:cellEditor>
+									        </p:column>
+									 									 
+									        <p:column headerText="Status">
+									            <p:cellEditor>
+									                <f:facet name="input"><p:inputText value="#{itemPedido.quantidadeItensPedido}" style="width:100%" label="Year"/></f:facet>
+									            </p:cellEditor>
+									        </p:column>
+									 
+									        <p:column style="width:32px">
+									            <p:rowEditor />
+									        </p:column>
+									    </p:dataTable>					          
 					            </p:column>
 					        </p:row>
+					    	<p:row>
+					            <p:column style="width:371px; ">					        
+						             <p:commandButton value="Novo Item" style="float: right"
+						             				  process="@this" update="@all"
+						                              action="#{pedidoMB.filtrar()}"/>	
+					            </p:column>                              
+                            </p:row>				        
 					    </f:facet>				
-					 </p:panelGrid>	
+					</p:panelGrid>	
+					 						
+					<p:panelGrid style="margin-top:20px; ">
+					    <f:facet name="header">
+					    	<p:row>
+								<p:column style="font-weight: bold;">
+									<h:outputLabel value="Qtde. Itens:" for="qtdeItens"/>
+								</p:column>
+						        <p:column style="font-weight: bold; ">
+							        <p:inputNumber id="qtdeItens" 
+							        	value="#{produtoMB.valorProduto}" 
+							        	readonly="true"				        	
+		                                decimalPlaces="0"
+		                                thousandSeparator="."/>  
+								</p:column>						    	
+								<p:column style="font-weight: bold;">
+									<h:outputLabel value="Valor Total:" for="valorTotal"/>
+								</p:column>
+						        <p:column style="font-weight: bold; ">
+							        <p:inputNumber id="valorTotal" 
+							        	value="#{produtoMB.valorProduto}" 
+							        	readonly="true"						        	
+							        	symbol="R$ "
+		                                decimalSeparator="," 
+		                                thousandSeparator="."/>  
+								</p:column>	
+								<p:column style="font-weight: bold;">
+									<h:outputLabel value="Forma Pagamento:" for="formaPagamento"/>
+								</p:column>
+						        <p:column style="font-weight: bold; ">
+							        <p:selectOneMenu id="formaPagamento" value="#{pedidoMB.formaPagamento}" 
+							        	required="true" 
+							        	requiredMessage="Selecione Forma Pagamento">
+							            <f:selectItems value="#{pedidoMB.listaFormasPagamento}"  
+							            				var="formaPg" 
+							            				itemLabel="#{formaPg.descricaoFormaPagamento}" 
+							            				itemValue="#{formaPg.idFormaPagamento}" />
+							            
+							            <p:ajax event="change" update="@all"></p:ajax>
+							        </p:selectOneMenu>
+						        </p:column>	 															        					    	
+							 </p:row>
+							 <p:row>
+					            <p:column colspan="6">
+					            	<p:commandButton 
+					            		 icon="ui-icon-disk" 
+						            	 title="Finalizar Pedido" 
+						            	 action="#{pedidoMB.salvar()}"
+						            	 update="@all"
+						            	 ajax="false"
+						            	 value="Finalizar Pedido" 
+						            	 style="float:right;"/>
+					            </p:column>					          
+					        </p:row>					        
+					    </f:facet>				
+					 </p:panelGrid>				    	
 			    </p:panel>
 
 			</h:form>

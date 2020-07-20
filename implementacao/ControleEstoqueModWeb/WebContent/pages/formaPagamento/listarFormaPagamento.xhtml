@@ -10,12 +10,12 @@
 	<ui:composition template="/pages/template/template.xhtml">
 		<ui:define name="content">
 				
-			<p:panel id="cadFormaPagamento">
+			<p:panel id="cadFormaPagamento"  style=" min-height: 500px;">
 				<h:form id="formFormaPagamentos">
 					
 					<p:growl id="msgs" showDetail="true"/>
 					
-					<p:panel id="panelFormaPagamentos" header="Cadastro Forma Pagamento" styleClass="semBorda" >
+					<p:panel id="panelFormaPagamentos" header="Cadastro Forma Pagamento" styleClass="semBorda">
 					
 					    <f:facet name="actions">
 					    	<p:commandButton icon="ui-icon-document" style="float: right; margin-left: 6px;" value="Novo"  action="#{formaPagamentoMB.novaFormaPagamento()}"/>

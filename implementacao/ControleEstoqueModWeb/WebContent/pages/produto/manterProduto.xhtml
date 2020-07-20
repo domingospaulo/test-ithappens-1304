@@ -13,7 +13,7 @@
 				
 				<p:growl id="mensagem" showDetail="true" />
 				
-			    <p:panel header="Cadastro Produto">
+			    <p:panel header="Cadastro Produto" style=" min-height: 500px;">
 				    <f:facet name="actions">
 				    	<p:commandButton icon="ui-icon-arrowreturn-1-w" style="float: right;" value="Voltar" 
 				    					immediate="true" action="#{produtoMB.voltarManterProduto()}"/>
@@ -47,7 +47,7 @@
 					    </p:row>					    
 					    <p:row>
 							<p:column style="font-weight: bold;">
-								<h:outputLabel value="Senha:" for="senha"/>
+								<h:outputLabel value="Valor Unitário:" for="valor"/>
 							</p:column>
 					        <p:column style="font-weight: bold;">
 					        	<p:inputNumber id="valor" 
