@@ -25,6 +25,7 @@
 								<h:outputLabel value="Nome:" for="nome"/>
 							</p:column>
 					        <p:column style="font-weight: bold; ">
+					        	<h:inputHidden value="#{clienteMB.clienteEdicao.idCliente}"/>
 					        	<p:inputText id="nome" value="#{clienteMB.clienteEdicao.nomeCliente}" 
 					        		required="true"
 					        	 	requiredMessage="Informe o Nome!"

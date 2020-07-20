@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:body>
+	<ui:composition template="/pages/template/template.xhtml">
+		<ui:define name="content">
+				
+			<p:panel id="cadFilial">
+				<h:form id="formFilials">
+					
+					<p:growl id="msgs" showDetail="true"/>
+					
+					<p:panel id="panelFilials" header="Cadastro Filiais" styleClass="semBorda" >
+					
+					    <f:facet name="actions">
+					    	<p:commandButton icon="ui-icon-document" style="float: right; margin-left: 6px;" value="Novo"  action="#{filialMB.novaFilial()}"/>
+					    </f:facet>	
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      				
+						<p:panelGrid  columns="1" style="width:100%; border: none !important;">
+							<p:panel style="height: 60px;  width: 100%; text-align: right;">
+					            <p:panelGrid  columns="8"  styleClass="semBorda" style="margin-top:8px; margin-bottom:8px; width: 200px;">
+
+									<p:column style="font-weight: bold;">
+										<h:outputLabel value="Código:" for="codigo"/>
+									</p:column>
+							        <p:column style="font-weight: bold; ">
+							        	<p:inputText id="codigo" value="#{filialMB.filtroCodigo}" style=" width: 140px;" onkeypress="return event.keyCode != 13"/>
+							        </p:column>		
+							        
+									<p:column style="font-weight: bold;">
+										<h:outputLabel value="Nome:" for="nome"/>
+									</p:column>
+							        <p:column style="font-weight: bold;">
+							        	<p:inputText id="nome" value="#{filialMB.filtroNome}"  style=" width: 140px;" 
+							        		onkeypress="return event.keyCode != 13"/>
+							        </p:column>		
+							        							        							        
+									<p:column style="font-weight: bold;">
+										<p:commandButton icon="ui-icon-search" 
+														 title="Pesquisar" 
+														 value="Pesquisar" 
+									            	 	 action="#{filialMB.filtrar()}"
+									            	 	 style="margin-left: 50px; width: 148px;"
+														 styleClass="btnVerde" 
+														 onclick="PF('statusDialog').show();" 
+									            	 	 update=":formFilials"/>
+									</p:column>
+							        <p:column style="font-weight: bold;">
+										<p:commandButton icon="ui-icon-refresh" 
+														 title="Limpar Pesquisa" 
+														 value="Limpar Pesquisa" 
+														 action="#{filialMB.limpaFiltro()}"
+														 styleClass="btnAmarelo" 
+														 style="margin-left: 10px; width: 148px;"  
+														 update=":formFilials"/>
+							        </p:column>							        				        
+					            </p:panelGrid>
+							 </p:panel>
+						</p:panelGrid>
+					</p:panel>
+			            
+		            <p:panelGrid  columns="1" style="width:100%; border: none !important; margin-top: 8px;">				
+						<p:dataTable 
+							value="#{filialMB.listaFiliaisModel}"
+							id="dataTableList"
+							var="filial" 
+							
+							lazy="true"
+							emptyMessage="Não há dados a serem mostrados"
+							
+							tableStyle="table-layout:auto;"
+							styleClass="comBorda"
+							rows="10"
+	                        paginator="true"
+	                        paginatorPosition="bottom"
+	                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							widgetVar="gradeBook">
+							
+							<f:facet name="header">
+					            Lista de Filiais
+					        </f:facet>
+							
+							<p:columnGroup type="header">
+								<p:row>
+									<p:column headerText="Ação"/>
+									<p:column headerText="Código" />
+									<p:column headerText="Nome" />
+								</p:row>
+							</p:columnGroup>
+							
+							<p:column style="width:32px;text-align: center">
+					            <p:commandButton 
+					            	action="#{filialMB.editarFilial()}" 
+					            	icon="ui-icon-pencil" 
+					            	title="Editar Filial">
+					                	<f:setPropertyActionListener value="#{filial}" target="#{filialMB.filialEdicao}" />
+					            </p:commandButton>	
+					        </p:column>	
+					        
+							<p:column>
+								<h:outputText value="#{filial.idFilial}" style="float:right;"/>
+							</p:column>
+							
+							<p:column>
+								<h:outputText value="#{filial.nomeFilial}" style="float:right;"/>
+							</p:column>
+		
+							<f:facet name="footer">
+							</f:facet>
+						</p:dataTable>
+					</p:panelGrid>
+				</h:form>			
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+
+</h:html>
